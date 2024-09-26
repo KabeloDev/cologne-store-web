@@ -29,6 +29,14 @@ Cart page: <br/>
 <img src="https://i.imgur.com/Q21MquF.png" height="80%" width="80%" />
 <br />
 <br />
+Checkout: <br/>
+<img src="https://i.imgur.com/49Rrkhl.png" height="80%" width="80%" />
+<br />
+<br />
+Orders: <br/>
+<img src="https://i.imgur.com/ZwfThhn.png" height="80%" width="80%" />
+<br />
+<br />
 Admin colognes page: <br/>
 <img src="https://i.imgur.com/5ZGWl2C.png" height="80%" width="80%" />
 <br />
