@@ -3,14 +3,14 @@
  ### [YouTube Demonstration](https://youtu.be/cI_14NEAq_Y)
 
 <h2>Description</h2>
-Cologne store web app made using ASP.Net core, ASP.Net web API and MS SQL Server. This app allows users to view colognes, add them to a cart, checkout and view their orders. It also allows administration to perform management tasks
+I built this web app using ASP.NET Core, Web API, and MS SQL Server. It lets users browse colognes, add them to their cart, checkout smoothly, and keep track of their orders. On the admin side, it includes tools for managing products and orders efficiently. A project I’m really proud of, combining functionality with a clean, modern design!
 <br />
 
 
 <h2>Languages and Utilities Used</h2>
 
 - <b>ASP.NET Core</b>
-- <b>ASP.NET Core web API</b>
+- <b>HTML, CSS, JavaScript</b>
 - <b>Microsoft SQL Server</b>
 
 <h2>Environments Used </h2>
