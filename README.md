@@ -10,6 +10,7 @@ I built this web app using ASP.NET Core, Web API, and MS SQL Server. It lets use
 <h2>Languages and Utilities Used</h2>
 
 - <b>ASP.NET Core</b>
+- <b>ASP.NET Core Web API</b>
 - <b>HTML, CSS, JavaScript</b>
 - <b>Microsoft SQL Server</b>
 
@@ -21,6 +22,14 @@ I built this web app using ASP.NET Core, Web API, and MS SQL Server. It lets use
 <h2>Program walk-through:</h2>
 
 <p align="center">
+Home page: 
+<br/>
+<img src="https://i.imgur.com/WnbZw5L.png" height="80%" width="80%" />
+<br />
+<br />
+<img src="https://i.imgur.com/d9CD5G8.png" height="80%" width="80%" />
+<br />
+<br />
 Cologne page: <br/>
 <img src="https://i.imgur.com/LIs7xLf.png" height="80%" width="80%" />
 <br />
