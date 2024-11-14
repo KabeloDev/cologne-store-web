@@ -1,0 +1,55 @@
+﻿@model CologneStore.DTO.CologneDTO
+
+@{
+}
+
+<div style="width:50%;">
+	<h2>Add Cologne</h2>
+
+	<a asp-action="Index" asp-controller="Cologne" class="btn btn-primary">Back</a>
+
+	<form asp-action="AddCologne" enctype="multipart/form-data">
+		<div class="my-2">
+			<label>Cologne</label>
+			<input type="text" class="form-control" asp-for="CologneName" />
+			<span asp-validation-for="CologneName" class="text-danger"></span>
+		</div>
+
+		<div class="my-2">
+			<label>Brand</label>
+			<input type="text" class="form-control" asp-for="CologneMakerName" />
+			<span asp-validation-for="CologneMakerName" class="text-danger"></span>
+		</div>
+
+		<div class="my-2">
+			<label>Type</label>
+			<select class="form-control" asp-for="TypeId" asp-items="Model.TypeList">
+				<option value="">Select Type</option>
+			</select>
+			<span asp-validation-for="TypeId" class="text-danger"></span>
+		</div>
+
+		<div class="my-2">
+			<label>For</label>
+			<select class="form-control" asp-for="CologneForId" asp-items="Model.CologneForList">
+				<option value="">Cologne For</option>
+			</select>
+			<span asp-validation-for="CologneForId" class="text-danger"></span>
+		</div>
+
+		<div class="my-2">
+			<label>Price</label>
+			<input type="number" class="form-control" asp-for="Price" />
+			<span asp-validation-for="Price" class="text-danger"></span>
+		</div>
+
+		<div class="my-2">
+			<label>Image</label>
+			<input type="file" class="form-control" asp-for="ImageFile" />
+		</div>
+
+		<div class="my-2">
+			<button type="submit" class="btn btn-info">Add</button>
+		</div>
+	</form>
+</div>

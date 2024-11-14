@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Cologne>
+
+<h2>Colognes</h2>
+
+<a asp-action="AddCologne" asp-controller="Cologne" class="btn btn-primary">Add cologne</a>
+
+@if (Model?.Count() > 0)
+{
+	<table class="table table-striped my-2">
+		<tr>
+			<th>Image</th>
+			<th>Cologne</th>
+			<th>Brand</th>
+			<th>Type</th>
+			<th>For</th>
+			<th>Price</th>
+			<th></th>
+		</tr>
+		@foreach (var cologne in Model)
+		{
+			<tr>
+				<td>
+					@if (string.IsNullOrWhiteSpace(cologne.CologneImage))
+					{
+						<img src="/images/default.jpg" style="width:80px;height:100px" alt="cologe image" />
+					}
+					else
+					{
+						<img src="/images/@cologne.CologneImage" style="width:80px;height:100px" alt="cologne image" />
+					}
+				</td>
+				<td>@cologne.CologneName</td>
+				<td>@cologne.CologneMakerName</td>
+				<td>@cologne.Type.TypeName</td>
+				<td>@cologne.CologneFor.CologneForName</td>
+				<td>@cologne.Price</td>
+				<td>
+					<a asp-action="UpdateCologne" asp-controller="Cologne" asp-route-id="@cologne.Id" class="btn btn-success">
+						Edit
+					</a>
+					<a asp-action="DeleteCologne" asp-controller="Cologne" asp-route-id="@cologne.Id" class="btn btn-danger"
+					   onclick="return window.confirm('Are you sure?')">
+						Delete
+					</a>
+				</td>
+			</tr>
+		}
+	</table>
+}

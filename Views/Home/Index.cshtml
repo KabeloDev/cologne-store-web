@@ -1,0 +1,94 @@
+﻿@model CologneStore.DTO.CologneDisplayModel;
+
+
+
+<form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center mb-3 px-2">
+    <div class="col-12">
+        <label class="visually-hidden" for="inlineFormInputGroupUsername">Search title</label>
+        <div class="input-group">
+            <div class="input-group-text"></div>
+            <input type="text" class="form-control" id="sTerm" name="sTerm" placeholder="Search title">
+        </div>
+    </div>
+
+    <div class="col-12">
+        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+        <select class="form-select" id="typeId" name="typeId">
+            <option selected>Type</option>
+            @foreach (var type in Model.Types)
+            {
+                <option value="@type.Id">@type.TypeName</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-12">
+        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+        <select class="form-select" id="cologneForId" name="cologneForId">
+            <option selected>For</option>
+            @foreach (var cologneFor in Model.ColognesFor)
+            {
+                <option value="@cologneFor.Id">@cologneFor.CologneForName</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" id="" class="btn btn-primary">Search</button>
+        <a href="/Home/Index" class="btn btn-dark">Reset</a>
+    </div>
+</form>
+
+<div class="w-100 d-flex flex-wrap">
+    @foreach (var cologne in Model.Colognes)
+    {
+        <div class="card mx-2 mb-4" style="width: 15rem;">
+            @if (string.IsNullOrEmpty(cologne.CologneImage))
+            {
+                <img style="width:100%;height:180px;" src="/images/default.jpg" class="card-img-top" alt="...">
+            }
+            else
+            {
+                <img style="width:100%;height:225px;" src="/images/@cologne.CologneImage" class="card-img-top" alt="...">
+            }
+            <div class="card-body">
+                <p class="card-text">
+                    Brand: @cologne.CologneMakerName
+                    <br />
+                    Type: @cologne.CologneName
+                    <br />
+                    Price: @cologne.Price
+                    <br />
+                </p>
+                @if (cologne.Quantity > 0)
+                {
+                    <button class="btn btn-primary" onclick="add(@cologne.Id)">Add To Cart</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary" onclick="alert(`Sorry! This item is out of stock.`)">Add To Cart</button>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        async function add(cologneId) {
+            try {
+                var response = await fetch(`/Cart/AddItem?cologneId=${cologneId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    console.log(result);
+                    var cartCountElement = document.getElementById("cartCount");
+                    alert("Item successfuly added to cart");
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+
+}

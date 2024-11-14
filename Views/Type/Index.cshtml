@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CologneType>
+
+@{
+}
+
+<h2>Types</h2>
+
+<a asp-action="AddType" asp-controller="Type" class="btn btn-primary">Add Type</a>
+
+<table class="table table-striped my-2">
+	<tr>
+		<th>Type</th>
+		<th></th>
+	</tr>
+	@foreach (var type in Model)
+	{
+		<tr>
+			<td>@type.TypeName</td>
+			<td>
+				<a asp-action="UpdateType" asp-controller="Type" asp-route-id="@type.Id" class="btn btn-success">
+					Edit
+				</a>
+				<a asp-action="DeleteType" asp-controller="Type" asp-route-id="@type.Id" class="btn btn-danger"
+				   onclick="return window.confirm('Are you sure?')">
+					Delete
+				</a>
+			</td>
+		</tr>
+	}
+</table>
+

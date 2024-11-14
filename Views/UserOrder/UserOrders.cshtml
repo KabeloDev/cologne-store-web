@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Order>
+
+<dv style="width:90%; margin:auto" class="mt-2">
+	@if (Model != null && Model.Count() > 0)
+	{
+		<h5>My Orders</h5>
+
+		<table class="table table-striped">
+			<tr>
+				<th>Order Date</th>
+				<th>Order Status</th>
+				<th></th>
+			</tr>
+			@foreach (var order in Model)
+			{
+				<tr>
+					<td>@order.CreateDate.ToString("dd-MM-yyy")</td>
+					<td>@order.OrderStatus.StatusName</td>
+					@if (order.OrderDetail != null && order.OrderDetail.Count > 0)
+					{
+						<td>
+							<table class="table table-bordered">
+								<tr>
+									<th>Cologne</th>
+									<th>Image</th>
+									<th>Type</th>
+									<th>Unit Price</th>
+									<th>Quantity</th>
+									<th>Total Price</th>
+								</tr>
+								@foreach (var item in order.OrderDetail)
+								{
+									<tr>
+										<td>@item.Cologne.CologneName</td>
+										<td>
+											@if (string.IsNullOrEmpty(item.Cologne.CologneImage))
+											{
+												<img src="/images/default.jpg" style="width:80px;height:100px" />
+											}
+											else
+											{
+												<img src="/images/@item.Cologne.CologneImage" style="width:80px;height:100px" />
+											}
+										</td>
+										<td>@item.Cologne.Type.TypeName</td>
+										<td>@item.Cologne.Price</td>
+										<td>@item.Quantity</td>
+										<td>@(item.Cologne.Price * @item.Quantity)</td>
+									</tr>
+								}
+							</table>
+							<div class="my-2">
+								<h5>Total: </h5> @(order.OrderDetail.Select(item => item.Cologne.Price * item.Quantity).Sum())
+							</div>
+						</td>
+					}
+				</tr>
+			}
+		</table>
+	}
+	else
+	{
+		<h5>No Orders</h5>
+	}
+</dv>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CologneStore.DTO.StockDisplayModel>
+@{
+}
+
+<h2>Stock</h2>
+
+<form asp-action="Index" method="get" class="my-2 d-flex gap-2">
+	<input type="text" name="sTerm" class="form-control w-25" placeholder="Search cologne" />
+	<button type="submit" class="btn btn-primary">Find</button>
+	<a asp-action="Index" asp-controller="Stock" class="btn btn-dark">Reset</a>
+</form>
+
+<table class="table table-bordered">
+	<tr>
+		<th>Cologne</th>
+		<th>Stock</th>
+		<th></th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@item.CologneName</td>
+			<td>@item.Quantity</td>
+			<td>
+				<a asp-action="ManageStock" asp-controller="Stock" asp-route-cologneId="@item.CologneId" class="btn btn-info">
+					Update stock
+				</a>
+			</td>
+		</tr>
+	}
+</table>

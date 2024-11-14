@@ -1,0 +1,22 @@
+﻿@model CologneStore.DTO.TypeDTO
+
+@{
+}
+
+<div style="width:50%;">
+	<h2>Add Type</h2>
+
+	<a asp-action="Index" asp-controller="Type" class="btn btn-primary">Back</a>
+
+	<form asp-action="AddType">
+		<div class="my-2">
+			<label>Type</label>
+			<input type="text" class="form-control" asp-for="TypeName" />
+			<span asp-validation-for="TypeName" class="text-danger"></span>
+		</div>
+
+		<div class="my-2">
+			<button type="submit" class="btn btn-info">Add</button>
+		</div>
+	</form>
+</div>

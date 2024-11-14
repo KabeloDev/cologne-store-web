@@ -1,0 +1,90 @@
+﻿@using CologneStore.DTO
+@model CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>Checkout</h2>
+<form asp-action="Checkout">
+    <div class="py-2">
+        <label asp-for="Name">Name</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="py-2">
+        <label asp-for="Email">Email</label>
+        <input type="text" class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="py-2">
+        <label asp-for="MobileNumber">Mobile Number</label>
+        <input type="text" class="form-control" asp-for="MobileNumber" />
+        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+    </div>
+
+    <div class="py-2">
+        <label asp-for="Address">Address</label>
+        <textarea type="text" class="form-control" asp-for="Address" rows="10"></textarea>
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="py-2">
+        <label asp-for="PaymentMethod">Payment Method</label>
+        <input type="text" class="form-control" asp-for="PaymentMethod" value="Online" readonly />
+        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+    </div>
+
+    <div class="py-2">
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#paymentModal">
+            Next
+        </button>
+    </div>
+
+
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Enter Payment Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="bankSelect" class="form-label">Select Bank</label>
+                        <select class="form-select" id="bankSelect" required>
+                            <option value="" selected disabled>Choose your bank</option>
+                            <option>ABSA</option>
+                            <option>Capitec</option>
+                            <option>FNB</option>
+                            <option>Nedbank</option>
+                            <option>Standard Bank</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="cardNumber" class="form-label">Card Number</label>
+                        <input type="text" class="form-control" id="cardNumber" maxlength="16" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="expirationDate" class="form-label">Expiration Date</label>
+                            <input type="month" class="form-control" id="expirationDate" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" maxlength="3" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
